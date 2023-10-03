@@ -1,0 +1,29 @@
+form {
+	width: 1440px;
+	margin: 15px auto;
+	.task-input {
+		height: 35px;
+		width: 800px;
+	}
+	button.ui.button.button-search {
+		background-color: #00b5ad;
+		color: white;
+	}
+	.ui.teal.buttons {
+		margin-left: 30px;
+	}
+	button.ui.button.btn-add {
+		color: #fff;
+    	background-color: #337ab7;
+		i.fa-solid.fa-plus {
+			padding-right: 5px;
+		}
+	}
+	button.ui.button.btn-reset {
+		color: #fff;
+		background-color: red;
+		i.fa-solid.fa-arrows-rotate {
+			padding-right: 5px;
+		}
+	}
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Input, Menu, Dropdown } from 'semantic-ui-react'
 import '../header/header.scss'
 
-export default class MenuExamplePointing extends Component {
+export default class Header extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -19,18 +19,18 @@ export default class MenuExamplePointing extends Component {
       <div className='header'>
         <Menu pointing>
           <Menu.Item
+            name='titan technology'
+            active={activeItem === 'titan technology'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
             name='home'
             active={activeItem === 'home'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='messages'
-            active={activeItem === 'messages'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name='friends'
-            active={activeItem === 'friends'}
+            name='about'
+            active={activeItem === 'about'}
             onClick={this.handleItemClick}
           />
           <Menu.Menu position='right'>

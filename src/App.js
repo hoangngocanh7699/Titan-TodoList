@@ -1,9 +1,13 @@
 import './App.css';
-import MenuExamplePointing from './components/header/header';
+import Headers from './components/header/header';
+import ListTodos from './components/listTodo/listTodos';
+import TodoActions from './components/todoActions/todoActions';
 
 function App() {
   return <>
-    <MenuExamplePointing />
+    <Headers />
+    <TodoActions />
+    <ListTodos />
   </>
 }
 
