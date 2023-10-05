@@ -3,7 +3,7 @@ import "../todoActions/todoAction.scss";
 import { useState } from "react";
 import { enum_language } from "../constant/enum";
 
-const TodoActions = ({editTodo, setEditTodo, handleEditTodo, input, setInput}) => {
+const TodoActions = ({openModalEdit, setOpenModalEdit, setTodos, input, handleInput, handleAddTodos, setCounter}) => {
   const [isShowModal, setIsShowModal] = useState(false);
 
   const options = [
@@ -13,26 +13,26 @@ const TodoActions = ({editTodo, setEditTodo, handleEditTodo, input, setInput}) =
   ];
 
   const optionStatus = [
-    { key: 'active', text: 'Hoạt động', value: 'active' },
-    { key: 'hide', text: 'Ẩn', value: 'hide' },
+    { key: 'active', text: 'Hoạt động', value: 'Hoạt động' },
+    { key: 'hide', text: 'Ẩn', value: 'Ẩn' },
   ]
 
-  const handleAddTodos = () => {
+  const handleOpenModal = () => {
     setIsShowModal(!isShowModal);
   };
 
   const closeModal = () => {
     if (isShowModal) {
       setIsShowModal(false);
-    } else if (editTodo) {
-      setEditTodo(false);
+    } else if (openModalEdit) {
+      setOpenModalEdit(false);
     }
-  };
-
-  const handleInput = (event) => {
-    setInput(event.target.value)
   }
 
+  const handleResetTodos = () => {
+    setTodos([])
+    setCounter(1)
+  }
 
   return (
     <>
@@ -52,7 +52,7 @@ const TodoActions = ({editTodo, setEditTodo, handleEditTodo, input, setInput}) =
         </Button.Group>
       </form>
 			<div className="modal-edit-todo">
-        {editTodo && (
+        {openModalEdit && (
           <Form>
 					<Form.Field className="panel-heading">
 						<div>{enum_language.EDIT_TODO}</div>
@@ -62,7 +62,7 @@ const TodoActions = ({editTodo, setEditTodo, handleEditTodo, input, setInput}) =
 						<input placeholder='Nhập vào tên công việc' />
 					</Form.Field>
 					<Form.Field>
-						<label>Trạng thái</label>
+						<label>{enum_language.BUTTON_STATUS}</label>
             <Dropdown placeholder='Hoạt động' fluid selection options={optionStatus} />
 					</Form.Field>
 					<Form.Field>
@@ -75,27 +75,27 @@ const TodoActions = ({editTodo, setEditTodo, handleEditTodo, input, setInput}) =
       <div className="modal-add-todos">
         {isShowModal && (
           <Form>
-					<Form.Field className="panel-heading">
-						<div>{enum_language.HEADER_TODO}</div>
-					</Form.Field>
-					<Form.Field>
-						<label>{enum_language.TODO_NAME}</label>
-						<input value={input} onChange={handleInput} placeholder='Nhập vào tên công việc' />
-					</Form.Field>
-					<Form.Field>
-						<label>{enum_language.BUTTON_STATUS}</label>
-            <Dropdown placeholder='Hoạt động' fluid selection options={optionStatus} />
-					</Form.Field>
-					<Form.Field>
-						<Button className='btn-confirm' type='submit'>{enum_language.BUTTON_CONFIRM}</Button>
-						<Button className='btn-cancel' onClick={() => closeModal()}>{enum_language.BUTTON_CANCEL}</Button>
-					</Form.Field>
-				</Form>
+					  <Form.Field className="panel-heading">
+						  <div>{enum_language.HEADER_TODO}</div>
+					  </Form.Field>
+					  <Form.Field>
+						  <label>{enum_language.TODO_NAME}</label>
+						  <input value={input} onChange={handleInput} placeholder='Nhập vào tên công việc' />
+					  </Form.Field>
+					  <Form.Field>
+						  <label>{enum_language.BUTTON_STATUS}</label>
+              <Dropdown placeholder='Hoạt động' fluid selection options={optionStatus}/>
+					  </Form.Field>
+					  <Form.Field>
+						  <Button className='btn-confirm' type='submit' onClick={handleAddTodos}>{enum_language.BUTTON_CONFIRM}</Button>
+						  <Button className='btn-cancel' onClick={() => closeModal()}>{enum_language.BUTTON_CANCEL}</Button>
+					  </Form.Field>
+				  </Form>
         )}
-        <Button className="btn-add" onClick={() => handleAddTodos()}>
+        <Button className="btn-add" onClick={() => handleOpenModal()}>
           <i class="fa-solid fa-plus"></i>{enum_language.BUTTON_ADD}
         </Button>
-        <Button className="btn-reset">
+        <Button className="btn-reset" onClick={() => {handleResetTodos()}}>
           <i class="fa-solid fa-arrows-rotate"></i>{enum_language.BUTTON_RESET}
         </Button>
       </div>

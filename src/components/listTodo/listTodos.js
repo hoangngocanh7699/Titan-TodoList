@@ -4,18 +4,24 @@ import "../listTodo/listTodos.scss";
 import { enum_language } from "../constant/enum";
 
 const options = [
-  { key: 1, id:1, text: "Tất cả", value: 1 },
-  { key: 2, id:2, text: "Hoạt động", value: 2 },
-  { key: 3, id:3, text: "Ẩn", value: 3 },
+  { text: "Tất cả", value: 1 },
+  { text: "Hoạt động", value: 2 },
+  { text: "Ẩn", value: 3 },
 ];
 
-const ListTodos = ({handleEditTodo}) => {
+const ListTodos = ({handleOpenModalEdit, todos, setTodos}) => {
 
   const [isActive, setIsActive] = useState(true)
+  const [searchValue, setSearchValue] = useState('');
+
   const buttonClassName = isActive ? 'active' : 'hidden';
 
   const handleClick = () => {
     setIsActive(!isActive)
+  }
+
+  const handleDeleteTodo = ({id}) => {
+    setTodos(todos.filter((item) => item.id !== id))
   }
 
   return (
@@ -33,7 +39,7 @@ const ListTodos = ({handleEditTodo}) => {
             <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>
-              <Input icon="search" placeholder="Search..." />
+              <Input icon="search" placeholder="Search..." value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
             </Table.HeaderCell>
             <Table.HeaderCell>
               <Dropdown text="Tất cả" options={options} simple item />
@@ -42,21 +48,21 @@ const ListTodos = ({handleEditTodo}) => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {options.map((item, index) => 
+          {todos.filter((item) => item.value.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => 
             <Table.Row key={index}>
-            <Table.Cell>{item.key}</Table.Cell>
+            <Table.Cell>{item.stt}</Table.Cell>
             <Table.Cell>{item.id}</Table.Cell>
-            <Table.Cell>{item.text}</Table.Cell>
+            <Table.Cell>{item.value}</Table.Cell>
             <Table.Cell className="status">
-              <Button className={buttonClassName} onClick={handleClick}>
+              <Button className={buttonClassName} onClick={() => handleClick()}>
                 {isActive ? 'Hoạt động' : 'Ẩn'}
               </Button>
             </Table.Cell>
             <Table.Cell>
-              <Button onClick={handleEditTodo} className="btn-edit"><i class="fa-regular fa-pen-to-square"></i>
+              <Button onClick={handleOpenModalEdit} className="btn-edit"><i class="fa-regular fa-pen-to-square"></i>
                 {enum_language.BUTTON_EDIT}
               </Button>
-              <Button className="btn-delete"><i class="fa-solid fa-trash"></i>
+              <Button className="btn-delete" onClick={() => handleDeleteTodo(item)}><i class="fa-solid fa-trash"></i>
                 {enum_language.BUTTON_DELETE}
               </Button>
             </Table.Cell>
