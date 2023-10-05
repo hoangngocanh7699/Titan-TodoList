@@ -12,9 +12,87 @@ form {
 	.ui.teal.buttons {
 		margin-left: 30px;
 	}
+}
+
+.modal-add-todos {
+	width: 1440px;
+	margin: 15px auto;
+	.form.ui.form {
+		border: 2px solid lightblue;
+		.field {
+			padding-left: 15px;
+			padding-bottom: 10px;
+		}
+		.field.panel-heading {
+			border: 1px solid;
+			background-color: #0f6dbe;
+			color: white;
+			height: 40px;
+			div {
+				margin-top: 10px;
+				font-size: 16px;
+			}
+		}
+		button.ui.button.btn-confirm {
+			padding-left: 15px;
+			background-color: #337ab7;
+			color: white;
+		}
+		button.ui.button.btn-cancel {
+			padding-left: 15px;
+			background-color: red;
+			color: white;
+		}
+	}
+
 	button.ui.button.btn-add {
 		color: #fff;
-    	background-color: #337ab7;
+		background-color: #337ab7;
+		i.fa-solid.fa-plus {
+			padding-right: 5px;
+		}
+	}
+	button.ui.button.btn-reset {
+		color: #fff;
+		background-color: red;
+		i.fa-solid.fa-arrows-rotate {
+			padding-right: 5px;
+		}
+	}
+}
+
+.modal-edit-todo {
+	.form.ui.form {
+		border: 2px solid lightblue;
+		.field {
+			padding-left: 15px;
+			padding-bottom: 10px;
+		}
+		.field.panel-heading {
+			border: 1px solid;
+			background-color: #0f6dbe;
+			color: white;
+			height: 40px;
+			div {
+				margin-top: 10px;
+				font-size: 16px;
+			}
+		}
+		button.ui.button.btn-confirm {
+			padding-left: 15px;
+			background-color: #337ab7;
+			color: white;
+		}
+		button.ui.button.btn-cancel {
+			padding-left: 15px;
+			background-color: red;
+			color: white;
+		}
+	}
+
+	button.ui.button.btn-add {
+		color: #fff;
+		background-color: #337ab7;
 		i.fa-solid.fa-plus {
 			padding-right: 5px;
 		}

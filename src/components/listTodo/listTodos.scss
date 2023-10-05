@@ -1,4 +1,25 @@
 table.ui.table.todos-list {
   width: 1440px;
   margin: auto;
+  button.ui.button.hidden {
+    background-color: red;
+    color: white;
+    width: 108.766px;
+  }
+  button.ui.button.active {
+    color: #fff;
+    background-color: #449d44;
+  }
+  button.ui.button.btn-edit {
+    background-color: #337ab7;
+    color: white;
+  }
+  button.ui.button.btn-delete {
+    background-color: red;
+    color: white;
+  }
+  i.fa-regular.fa-pen-to-square,
+  i.fa-solid.fa-trash {
+    padding-right: 5px;
+  }
 }
