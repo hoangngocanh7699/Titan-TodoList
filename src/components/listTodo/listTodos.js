@@ -7,12 +7,19 @@ const options = [
   { text: "Tất cả", value: 1 },
   { text: "Hoạt động", value: 2 },
   { text: "Ẩn", value: 3 },
-];
+]
+
+const optionArrange = [
+  {key: 1, text: 'Từ A-Z', value: 'Từ A-Z'},
+  {key: 2, text: 'Từ Z-A', value: 'Từ Z-A'},
+  {key: 3, text: 'Trạng thái kích hoạt', value: 'Trạng thái kích hoạt'},
+  {key: 3, text: 'Trạng thái ẩn', value: 'Trạng thái ẩn'}
+]
 
 const ListTodos = ({handleOpenModalEdit, todos, setTodos}) => {
 
   const [isActive, setIsActive] = useState(true)
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('')
 
   const buttonClassName = isActive ? 'active' : 'hidden';
 
@@ -26,6 +33,21 @@ const ListTodos = ({handleOpenModalEdit, todos, setTodos}) => {
 
   return (
     <>
+      <form>
+        <Input type="text" className="task-input" required />
+        <Button className="button-search" type="submit" >
+          {enum_language.BUTTON_SEARCH}
+        </Button>
+        <Button.Group color="teal">
+          <Button className="arrange">{enum_language.BUTTON_ARRANGE}</Button>
+          <Dropdown
+            className="button icon"
+            floating
+            options={optionArrange}
+            trigger={<></>}
+          />
+        </Button.Group>
+      </form>
       <Table className="todos-list">
         <Table.Header>
           <Table.Row>

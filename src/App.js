@@ -45,8 +45,8 @@ function App() {
 
   return <>
     <Headers />
-    <TodoActions setCounter={setCounter} handleAddTodos={handleAddTodos} handleInput={handleInput} openModalEdit={openModalEdit} setOpenModalEdit={setOpenModalEdit} handleOpenModalEdit={handleOpenModalEdit} input={input} setInput={setInput} todos={todos} setTodos={setTodos}/>
-    <ListTodos setCounter={setCounter} handleAddTodos={handleAddTodos} input={input} setInput={setInput} handleInput={handleInput} openModalEdit={openModalEdit} setOpenModalEdit={setOpenModalEdit} handleOpenModalEdit={handleOpenModalEdit} todos={todos} setTodos={setTodos}/>
+    <TodoActions setCounter={setCounter} handleAddTodos={handleAddTodos} handleInput={handleInput} openModalEdit={openModalEdit} setOpenModalEdit={setOpenModalEdit} input={input} setTodos={setTodos}/>
+    <ListTodos handleOpenModalEdit={handleOpenModalEdit} todos={todos} setTodos={setTodos}/>
     <Footer />
   </>
 }

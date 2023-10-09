@@ -1,16 +1,10 @@
-import { Dropdown, Button, Input, Form } from "semantic-ui-react";
+import { Dropdown, Button, Form } from "semantic-ui-react";
 import "../todoActions/todoAction.scss";
 import { useState } from "react";
 import { enum_language } from "../constant/enum";
 
 const TodoActions = ({openModalEdit, setOpenModalEdit, setTodos, input, handleInput, handleAddTodos, setCounter}) => {
-  const [isShowModal, setIsShowModal] = useState(false);
-
-  const options = [
-    { key: 1, text: "Choice 1", value: 1 },
-    { key: 2, text: "Choice 2", value: 2 },
-    { key: 3, text: "Choice 3", value: 3 },
-  ];
+  const [isShowModal, setIsShowModal] = useState(false)
 
   const optionStatus = [
     { key: 'active', text: 'Hoạt động', value: 'Hoạt động' },
@@ -36,21 +30,6 @@ const TodoActions = ({openModalEdit, setOpenModalEdit, setTodos, input, handleIn
 
   return (
     <>
-      <form>
-        <Input type="text" className="task-input" required />
-        <Button className="button-search" type="submit">
-          {enum_language.BUTTON_SEARCH}
-        </Button>
-        <Button.Group color="teal">
-          <Button className="arrange">{enum_language.BUTTON_ARRANGE}</Button>
-          <Dropdown
-            className="button icon"
-            floating
-            options={options}
-            trigger={<></>}
-          />
-        </Button.Group>
-      </form>
 			<div className="modal-edit-todo">
         {openModalEdit && (
           <Form>
